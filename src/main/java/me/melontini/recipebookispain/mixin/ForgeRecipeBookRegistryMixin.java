@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class ForgeRecipeBookRegistryMixin {
     // pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work pls work
     @SuppressWarnings("unchecked")
-    @Redirect(at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableList;of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;"), remap = false, method = "<clinit>")
+    @Redirect(at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableList;of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;"), remap = false, method = "initDefaultValues")
     private static <E> ImmutableList<E> listOf(E e1, E e2, E e3, E e4) {
         if (e1 == RecipeBookGroup.CRAFTING_EQUIPMENT) {
             return (ImmutableList<E>) ImmutableList.copyOf(RecipeBookIsPain.CRAFTING_SEARCH_MAP);
